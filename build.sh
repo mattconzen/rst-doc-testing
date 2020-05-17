@@ -1,1 +1,1 @@
-pandoc --from rst --to markdown -o README.md DOC.rst &&  open README.md
+pandoc --from rst --to gfm -o README.md DOC.rst &&  open README.md
