@@ -1,0 +1,35 @@
+<h1 id="this-is-a-title-in-rst">This is a title in RST</h1>
+<p>There's an RST cheatsheet available here: <a href="https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst">https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst</a></p>
+<p>I'm going to try to include some examples from Consul, as well as define some words as <a href="The%20word%20references%20can%20now%20be%20referenced%20throughout%20this%20doc%20as%20a%20canonical%20definition.">references</a> which enable automatic inline definitions in our doc.</p>
+<p>The cool thing about RST (aside from references, which are similar to Markdown anchors but not quite the same) is that it supports 'includes'. We can embed snippets from another file directly in this file, and it will render as if it was included inline.</p>
+<p>So for Consul, if we wanted to reference the Catalog API<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, we could use an inline link or a citation reference like we could using Markdown.</p>
+<p>However, we could also use an <code>include</code> directive which embeds some of the text here directly:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode go"><code class="sourceCode go"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">type</span> CatalogService <span class="kw">struct</span> {</span>
+<span id="cb1-2"><a href="#cb1-2"></a>	ID                       <span class="dt">string</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>	Node                     <span class="dt">string</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>	Address                  <span class="dt">string</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>	Datacenter               <span class="dt">string</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>	TaggedAddresses          <span class="kw">map</span>[<span class="dt">string</span>]<span class="dt">string</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>	NodeMeta                 <span class="kw">map</span>[<span class="dt">string</span>]<span class="dt">string</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>	ServiceID                <span class="dt">string</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>	ServiceName              <span class="dt">string</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>	ServiceAddress           <span class="dt">string</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>	ServiceTaggedAddresses   <span class="kw">map</span>[<span class="dt">string</span>]ServiceAddress</span>
+<span id="cb1-12"><a href="#cb1-12"></a>	ServiceTags              []<span class="dt">string</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>	ServiceMeta              <span class="kw">map</span>[<span class="dt">string</span>]<span class="dt">string</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>	ServicePort              <span class="dt">int</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>	ServiceWeights           Weights</span>
+<span id="cb1-16"><a href="#cb1-16"></a>	ServiceEnableTagOverride <span class="dt">bool</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>	ServiceProxy             *AgentServiceConnectProxyConfig</span>
+<span id="cb1-18"><a href="#cb1-18"></a>	CreateIndex              <span class="dt">uint64</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>	Checks                   HealthChecks</span>
+<span id="cb1-20"><a href="#cb1-20"></a>	ModifyIndex              <span class="dt">uint64</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>	Namespace                <span class="dt">string</span> <span class="st">`json:&quot;,omitempty&quot;`</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>}</span>
+<span id="cb1-23"><a href="#cb1-23"></a></span></code></pre></div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="https://github.com/hashicorp/consul/blob/master/api/catalog.go">https://github.com/hashicorp/consul/blob/master/api/catalog.go</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
